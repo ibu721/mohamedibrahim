@@ -4,180 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Ibrahim | Senior UI & Frontend Developer</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Google Fonts */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    line-height: 1.6;
-}
+        /* ---------------- General ---------------- */
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif;}
+        body {color:#333; line-height:1.6;}
+        a {text-decoration:none;}
+        h2 {margin-bottom:1rem;}
+        .container {width:90%; max-width:1200px; margin:auto; padding:2rem 0;}
 
-/* Container */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 2rem 0;
-}
+        /* ---------------- Hero ---------------- */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:#fff;
+        }
+        .hero .hero-content {max-width:700px;}
+        .hero h1 {font-size:3rem; margin-bottom:1rem;}
+        .hero p {font-size:1.2rem; margin-bottom:2rem;}
+        .btn {background:#fff; color:#2575fc; padding:0.8rem 2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
+        .btn:hover {background:#2575fc; color:#fff; transform:translateY(-2px);}
 
-/* Hero Section with Banner */
-.hero {
-    position: relative;
-    background: url('banner.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-}
+        /* ---------------- Summary ---------------- */
+        .summary {padding:4rem 0; background:#e8f0fe; text-align:center;}
+        .summary h2 {color:#2575fc; font-size:2rem; margin-bottom:1.5rem;}
+        .summary p {max-width:900px; margin:auto; font-size:1rem; line-height:1.8;}
 
-.hero .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(37, 117, 252, 0.6); /* Blue overlay */
-}
+        /* ---------------- About ---------------- */
+        .about {background:#fff; padding:4rem 0; text-align:center;}
+        .about h2 {color:#2575fc; font-size:2rem; margin-bottom:1rem;}
+        .about p {max-width:900px; margin:auto; font-size:1rem; line-height:1.8; color:#333;}
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-}
+        /* ---------------- Skills ---------------- */
+        .skills {padding:4rem 0; background:linear-gradient(135deg,#2575fc,#6a11cb); text-align:center;}
+        .skills h2 {color:#fff; font-size:2rem; margin-bottom:2rem;}
+        .skill-list {display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;}
+        .skill {background:#fff; color:#2575fc; padding:0.6rem 1rem; border-radius:20px; font-weight:bold; transition:0.3s;}
+        .skill:hover {background:#1b5fc3; color:#fff; transform:translateY(-2px);}
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
+        /* ---------------- Accomplishments ---------------- */
+        .accomplishments {padding:4rem 0; background:#f0f4ff; text-align:center;}
+        .accomplishments h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
+        .accomplishment-list {display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;}
+        .accomplishment {background:#2575fc; color:#fff; padding:0.6rem 1rem; border-radius:20px; font-weight:bold; transition:0.3s;}
+        .accomplishment:hover {background:#1b5fc3; transform:translateY(-2px);}
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
+        /* ---------------- Certifications & Awards ---------------- */
+        .certifications {padding:4rem 0; background:#fff; text-align:center;}
+        .certifications h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
+        .cert-list {display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;}
+        .cert-card {background:#2575fc; color:#fff; padding:1rem 1.5rem; border-radius:12px; min-width:250px; max-width:300px; font-weight:bold; transition:0.3s;}
+        .cert-card:hover {background:#1b5fc3; transform:translateY(-3px);}
 
-.btn {
-    background: #fff;
-    color: #2575fc;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        /* ---------------- Projects ---------------- */
+        .projects {background:linear-gradient(135deg,#6a11cb,#2575fc); padding:4rem 0;}
+        .projects h2 {color:#fff; font-size:2rem; text-align:center; margin-bottom:2rem;}
+        .project-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem;}
+        .project-card {background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); transition:transform 0.3s;}
+        .project-card:hover {transform:translateY(-5px);}
 
-.btn:hover {
-    background: #2575fc;
-    color: #fff;
-}
+        /* ---------------- Components ---------------- */
+        .components {background:#f0f4ff; padding:4rem 0; text-align:center;}
+        .components h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
+        .component-group {margin-bottom:3rem;}
+        .component-group h3 {font-size:1.5rem; margin-bottom:1rem;}
 
-/* About Section */
-.about {
-    background: #f9f9f9;
-    padding: 4rem 0;
-    text-align: center;
-}
+        /* Buttons */
+        .btn-outline {background:transparent; border:2px solid #2575fc; color:#2575fc;}
+        .btn-success {background:#28a745; color:#fff;}
+        .btn + .btn {margin-left:1rem;}
 
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+        /* Tabs */
+        .tabs {max-width:600px; margin:auto;}
+        .tab-header {display:flex; justify-content:center; border-bottom:2px solid #ddd;}
+        .tab-link {padding:0.8rem 1.5rem; cursor:pointer; margin:0 0.5rem; border-radius:5px 5px 0 0; background:#f1f1f1; transition:0.3s;}
+        .tab-link.active {background:#2575fc; color:#fff;}
+        .tab-content {display:none; padding:1.5rem; border:1px solid #ddd; border-top:none; text-align:left;}
+        .tab-content.active {display:block;}
 
-/* Skills Section */
-.skills {
-    padding: 4rem 0;
-    text-align: center;
-}
+        /* Accordion */
+        .accordion {max-width:600px; margin:auto; text-align:left;}
+        .accordion-item {border:1px solid #ddd; border-radius:5px; margin-bottom:0.5rem;}
+        .accordion-header {padding:1rem; cursor:pointer; background:#f1f1f1; font-weight:bold;}
+        .accordion-content {padding:1rem; display:none; background:#fff;}
 
-.skills h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
+        /* Loader */
+        .loader {border:6px solid #f3f3f3; border-top:6px solid #2575fc; border-radius:50%; width:50px; height:50px; margin:1rem auto; animation:spin 1s linear infinite;}
+        @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
+        /* ---------------- Contact ---------------- */
+        .contact {text-align:center; padding:4rem 0; background:linear-gradient(135deg,#6a11cb,#2575fc);}
+        .contact h2 {color:#fff; font-size:2rem; margin-bottom:1rem;}
+        .contact p {color:#fff; margin-bottom:1.5rem;}
+        .contact .btn {background:#fff; color:#2575fc;}
 
-.skill {
-    background: #2575fc;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    font-weight: bold;
-}
+        /* ---------------- Footer ---------------- */
+        footer {background:#222; color:#fff; text-align:center; padding:2rem 0;}
 
-/* Projects Section */
-.projects {
-    background: #f9f9f9;
-    padding: 4rem 0;
-}
-
-.projects h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.project-card {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Contact Section */
-.contact {
-    text-align: center;
-    padding: 4rem 0;
-}
-
-.contact h2 {
-    margin-bottom: 1rem;
-}
-
-/* Footer */
-footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-}
+        /* ---------------- Responsive ---------------- */
+        @media(max-width:768px){
+            .hero h1{font-size:2.2rem;}
+            .hero p{font-size:1rem;}
+        }
     </style>
 </head>
 <body>
-    <!-- Hero Section with Banner -->
+
+    <!-- Hero Section -->
     <header class="hero">
-        <div class="overlay"></div>
         <div class="hero-content container">
             <h1>Hi, I'm Mohamed Ibrahim</h1>
             <p>Senior UI & Frontend Developer with 8 years of experience in crafting engaging user experiences and dynamic web applications.</p>
@@ -185,11 +124,19 @@ footer {
         </div>
     </header>
 
+    <!-- Professional Summary -->
+    <section class="summary">
+        <div class="container">
+            <h2>Professional Summary</h2>
+            <p>Experienced and creative Web Developer committed to crafting interactive, user-friendly, and feature-rich websites. Possesses strong analytical skills and technical expertise in web solutions, adept at leading teams to success. Skilled in building websites from inception to completion and proficient in various programming languages including Angular, HTML5, CSS3, JavaScript, jQuery, Bootstrap 5, XSLT, XML, React Native, and WordPress at a foundational level. Eager to embrace new technologies for continuous learning and advancement.</p>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>I specialize in creating visually appealing, responsive, and user-friendly web applications. With expertise in UI/UX design and frontend development, I have delivered more than 10 projects including long-term and short-term assignments.</p>
+            <p>I am a Senior UI & Frontend Developer with almost 8 years of experience in Frontend, UI, and UX design and development. I have successfully completed 10 projects including both long-term and short-term projects. My expertise lies in designing intuitive user interfaces, optimizing performance, and delivering high-quality web applications that exceed client expectations.</p>
         </div>
     </section>
 
@@ -198,12 +145,52 @@ footer {
         <div class="container">
             <h2>My Skills</h2>
             <div class="skill-list">
-                <div class="skill">HTML / CSS / SCSS</div>
-                <div class="skill">JavaScript / TypeScript</div>
-                <div class="skill">React / Angular</div>
-                <div class="skill">UI/UX Design</div>
-                <div class="skill">Responsive & Mobile Design</div>
-                <div class="skill">Figma / Adobe XD</div>
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React Native</div>
+                <div class="skill">Angular</div>
+                <div class="skill">jQuery</div>
+                <div class="skill">Bootstrap 5</div>
+                <div class="skill">SVN</div>
+                <div class="skill">Git</div>
+                <div class="skill">Redux</div>
+                <div class="skill">Adobe Creative Tools</div>
+                <div class="skill">Dreamweaver</div>
+                <div class="skill">XSLT / XML</div>
+                <div class="skill">Visual Studio Tools</div>
+                <div class="skill">Microsoft Office</div>
+                <div class="skill">Foundations D3.js</div>
+                <div class="skill">Sass & Less</div>
+                <div class="skill">Windows / Mac OS</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accomplishments Section -->
+    <section class="accomplishments">
+        <div class="container">
+            <h2>Accomplishments & Soft Skills</h2>
+            <div class="accomplishment-list">
+                <div class="accomplishment">Positive Thinking</div>
+                <div class="accomplishment">Problem Solving</div>
+                <div class="accomplishment">Time Management</div>
+                <div class="accomplishment">Smart Work</div>
+                <div class="accomplishment">Ownership</div>
+                <div class="accomplishment">Integrity</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Awards Section -->
+    <section class="certifications">
+        <div class="container">
+            <h2>Certifications & Awards</h2>
+            <div class="cert-list">
+                <div class="cert-card">Certified Web Design Application (Web Design)</div>
+                <div class="cert-card">Diploma in Office Accounting Software</div>
+                <div class="cert-card">Diploma in Office Automation</div>
+                <div class="cert-card">Most Valuable Player Award</div>
             </div>
         </div>
     </section>
@@ -211,21 +198,70 @@ footer {
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2>Projects</h2>
+            <h2>My Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <h3>Project 1</h3>
-                    <p>Long-term enterprise project focused on dashboard UI design and development.</p>
+                    <p>Long-term project using Angular, Bootstrap 5 and REST APIs for enterprise application.</p>
                 </div>
                 <div class="project-card">
                     <h3>Project 2</h3>
-                    <p>Short-term website redesign for improved user experience and accessibility.</p>
+                    <p>Short-term UI redesign project improving UX and responsiveness for e-commerce website.</p>
                 </div>
                 <div class="project-card">
                     <h3>Project 3</h3>
-                    <p>Dynamic frontend development for a SaaS application with React.</p>
+                    <p>React Native mobile app development for cross-platform user interaction.</p>
                 </div>
-                <!-- Add more project cards -->
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Section -->
+    <section class="components">
+        <div class="container">
+            <h2>UI Components</h2>
+
+            <!-- Buttons -->
+            <div class="component-group">
+                <h3>Buttons</h3>
+                <button class="btn">Primary</button>
+                <button class="btn-outline">Outline</button>
+                <button class="btn-success">Success</button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="component-group">
+                <h3>Tabs</h3>
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-link active" onclick="openTab(event,'tab1')">Tab 1</div>
+                        <div class="tab-link" onclick="openTab(event,'tab2')">Tab 2</div>
+                    </div>
+                    <div id="tab1" class="tab-content active">Content of Tab 1</div>
+                    <div id="tab2" class="tab-content">Content of Tab 2</div>
+                </div>
+            </div>
+
+            <!-- Accordion -->
+            <div class="component-group">
+                <h3>Accordion</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">Accordion Item 1</div>
+                        <div class="accordion-content">Content for accordion item 1.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">Accordion Item 2</div>
+                        <div class="accordion-content">Content for accordion item 2.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loader -->
+            <div class="component-group">
+                <h3>Loader</h3>
+                <div class="loader"></div>
             </div>
         </div>
     </section>
@@ -234,16 +270,33 @@ footer {
     <section class="contact">
         <div class="container">
             <h2>Contact Me</h2>
-            <p>If you want to collaborate or just say hi, feel free to reach out!</p>
-            <a href="mailto:your-email@example.com" class="btn">Email Me</a>
+            <p>Email: mohamed.ibrahim@example.com</p>
+            <a href="mailto:mohamed.ibrahim@example.com" class="btn">Send Email</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Mohamed Ibrahim. All rights reserved.</p>
-        </div>
+        <p>&copy; 2026 Mohamed Ibrahim. All rights reserved.</p>
     </footer>
+
+    <!-- Scripts for Tabs and Accordion -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+
 </body>
 </html>
