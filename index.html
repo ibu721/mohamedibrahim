@@ -1,302 +1,1249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Ibrahim | Senior UI & Frontend Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mohamed Ibrahim | Senior UI & Frontend Developer Portfolio</title>
+    <link href="https://unpkg.com/lucide-static@latest/icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* ---------------- General ---------------- */
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif;}
-        body {color:#333; line-height:1.6;}
-        a {text-decoration:none;}
-        h2 {margin-bottom:1rem;}
-        .container {width:90%; max-width:1200px; margin:auto; padding:2rem 0;}
-
-        /* ---------------- Hero ---------------- */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            color:#fff;
+        /* ---------------- Design Tokens & Core Reset ---------------- */
+        :root {
+            /* Default Dark Theme Tokens */
+            --bg-canvas: #090D16;
+            --bg-surface: rgba(17, 24, 39, 0.7);
+            --bg-sandbox-group: rgba(0, 0, 0, 0.15);
+            --border-glow: rgba(99, 102, 241, 0.15);
+            --border-line: rgba(255, 255, 255, 0.08);
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-label: #E2E8F0;
+            --input-bg: rgba(255, 255, 255, 0.02);
+            --input-border: #cbd5e1;
+            
+            --clr-primary: #6366F1;
+            --clr-cyan: #06B6D4;
+            --clr-emerald: #10B981;
+            --max-width: 1140px;
+            
+            --step-bg: #1e293b;
+            --step-border: #475569;
+            --step-text: #94A3B8;
+            --step-line: #334155;
         }
-        .hero .hero-content {max-width:700px;}
-        .hero h1 {font-size:3rem; margin-bottom:1rem;}
-        .hero p {font-size:1.2rem; margin-bottom:2rem;}
-        .btn {background:#fff; color:#2575fc; padding:0.8rem 2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
-        .btn:hover {background:#2575fc; color:#fff; transform:translateY(-2px);}
 
-        /* ---------------- Summary ---------------- */
-        .summary {padding:4rem 0; background:#e8f0fe; text-align:center;}
-        .summary h2 {color:#2575fc; font-size:2rem; margin-bottom:1.5rem;}
-        .summary p {max-width:900px; margin:auto; font-size:1rem; line-height:1.8;}
+        [data-theme="light"] {
+            /* Light / White Theme Adaptive Tokens */
+            --bg-canvas: #FAFAFA;
+            --bg-surface: #FFFFFF;
+            --bg-sandbox-group: #F1F5F9;
+            --border-glow: rgba(99, 102, 241, 0.08);
+            --border-line: rgba(0, 0, 0, 0.08);
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --text-label: #1E293B;
+            --input-bg: #FFFFFF;
+            --input-border: #cbd5e1;
+            
+            --step-bg: #F1F5F9;
+            --step-border: #CBD5E1;
+            --step-text: #64748B;
+            --step-line: #E2E8F0;
+        }
 
-        /* ---------------- About ---------------- */
-        .about {background:#fff; padding:4rem 0; text-align:center;}
-        .about h2 {color:#2575fc; font-size:2rem; margin-bottom:1rem;}
-        .about p {max-width:900px; margin:auto; font-size:1rem; line-height:1.8; color:#333;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        /* ---------------- Skills ---------------- */
-        .skills {padding:4rem 0; background:linear-gradient(135deg,#2575fc,#6a11cb); text-align:center;}
-        .skills h2 {color:#fff; font-size:2rem; margin-bottom:2rem;}
-        .skill-list {display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;}
-        .skill {background:#fff; color:#2575fc; padding:0.6rem 1rem; border-radius:20px; font-weight:bold; transition:0.3s;}
-        .skill:hover {background:#1b5fc3; color:#fff; transform:translateY(-2px);}
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-        /* ---------------- Accomplishments ---------------- */
-        .accomplishments {padding:4rem 0; background:#f0f4ff; text-align:center;}
-        .accomplishments h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
-        .accomplishment-list {display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem;}
-        .accomplishment {background:#2575fc; color:#fff; padding:0.6rem 1rem; border-radius:20px; font-weight:bold; transition:0.3s;}
-        .accomplishment:hover {background:#1b5fc3; transform:translateY(-2px);}
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
 
-        /* ---------------- Certifications & Awards ---------------- */
-        .certifications {padding:4rem 0; background:#fff; text-align:center;}
-        .certifications h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
-        .cert-list {display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;}
-        .cert-card {background:#2575fc; color:#fff; padding:1rem 1.5rem; border-radius:12px; min-width:250px; max-width:300px; font-weight:bold; transition:0.3s;}
-        .cert-card:hover {background:#1b5fc3; transform:translateY(-3px);}
+        /* ---------------- Layout Framework ---------------- */
+        .container {
+            width: 98%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
 
-        /* ---------------- Projects ---------------- */
-        .projects {background:linear-gradient(135deg,#6a11cb,#2575fc); padding:4rem 0;}
-        .projects h2 {color:#fff; font-size:2rem; text-align:center; margin-bottom:2rem;}
-        .project-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem;}
-        .project-card {background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); transition:transform 0.3s;}
-        .project-card:hover {transform:translateY(-5px);}
+        section {
+            padding: 7rem 0;
+            position: relative;
+        }
 
-        /* ---------------- Components ---------------- */
-        .components {background:#f0f4ff; padding:4rem 0; text-align:center;}
-        .components h2 {color:#2575fc; font-size:2rem; margin-bottom:2rem;}
-        .component-group {margin-bottom:3rem;}
-        .component-group h3 {font-size:1.5rem; margin-bottom:1rem;}
+        /* Ambient Glow Layers */
+        .glow-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+            top: 20%;
+            right: -10%;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-        /* Buttons */
-        .btn-outline {background:transparent; border:2px solid #2575fc; color:#2575fc;}
-        .btn-success {background:#28a745; color:#fff;}
-        .btn + .btn {margin-left:1rem;}
+        /* Typography */
+        .section-tag {
+            display: inline-block;
+            color: var(--clr-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
 
-        /* Tabs */
-        .tabs {max-width:600px; margin:auto;}
-        .tab-header {display:flex; justify-content:center; border-bottom:2px solid #ddd;}
-        .tab-link {padding:0.8rem 1.5rem; cursor:pointer; margin:0 0.5rem; border-radius:5px 5px 0 0; background:#f1f1f1; transition:0.3s;}
-        .tab-link.active {background:#2575fc; color:#fff;}
-        .tab-content {display:none; padding:1.5rem; border:1px solid #ddd; border-top:none; text-align:left;}
-        .tab-content.active {display:block;}
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* Accordion */
-        .accordion {max-width:600px; margin:auto; text-align:left;}
-        .accordion-item {border:1px solid #ddd; border-radius:5px; margin-bottom:0.5rem;}
-        .accordion-header {padding:1rem; cursor:pointer; background:#f1f1f1; font-weight:bold;}
-        .accordion-content {padding:1rem; display:none; background:#fff;}
+        /* ---------------- Theme Floating Toggle Controller ---------------- */
+        .theme-switcher-wrapper {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+        }
 
-        /* Loader */
-        .loader {border:6px solid #f3f3f3; border-top:6px solid #2575fc; border-radius:50%; width:50px; height:50px; margin:1rem auto; animation:spin 1s linear infinite;}
-        @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+        .theme-toggle-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
 
-        /* ---------------- Contact ---------------- */
-        .contact {text-align:center; padding:4rem 0; background:linear-gradient(135deg,#6a11cb,#2575fc);}
-        .contact h2 {color:#fff; font-size:2rem; margin-bottom:1rem;}
-        .contact p {color:#fff; margin-bottom:1.5rem;}
-        .contact .btn {background:#fff; color:#2575fc;}
+        .theme-toggle-btn:hover {
+            transform: translateY(-1px);
+            border-color: var(--clr-primary);
+        }
+
+        /* ---------------- Hero Section ---------------- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 5rem;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-line);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--clr-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--clr-emerald);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--clr-primary), var(--clr-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ---------------- Buttons ---------------- */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .btn-prime {
+            background: var(--text-main);
+            color: var(--bg-canvas);
+            border: none;
+            padding: 0.85rem 2.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-prime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-prime.secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+        }
+
+        .btn-prime.secondary:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--text-muted);
+            box-shadow: none;
+        }
+
+        /* ---------------- Cards & Layout Matrices ---------------- */
+        .glass-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .metrics-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .metric-tile {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-line);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .metric-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        /* ---------------- Skill Arrays ---------------- */
+        .pill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .pill-node {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .pill-node:hover {
+            border-color: var(--clr-primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .pill-node.accent {
+            background: rgba(6, 182, 212, 0.05);
+            border-color: rgba(6, 182, 212, 0.2);
+            color: var(--clr-cyan);
+        }
+
+        /* Loader System Elements */
+        .custom_loader {
+            display: flex;
+            left: 50%;
+            opacity: 0.5;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dot-loader {
+            height: 170px;
+            width: 70px;
+            position: relative;
+            animation: 1.2s grow ease-in-out infinite;
+            background-image: url('https://www.pinclipart.com/picdir/big/76-763424_2015-arathi-n-blue-web-buttons-png-clipart.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0px;
+            opacity: 0.9;
+        }
+
+        .dot-loader--2 {
+            animation-delay: 0.155s;
+        }
+
+        .dot-loader--3 {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes grow {
+            0%, 40%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* ---------------- Certifications & Accomplishments Layout ---------------- */
+        .grid-two-equal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .item-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .item-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .item-list li::before {
+            content: "✦";
+            color: var(--clr-cyan);
+            font-weight: bold;
+        }
+
+        /* ---------------- Project Presentation Row Cards ---------------- */
+        .showcase-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project-stripe {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .project-stripe:hover {
+            border-color: var(--border-glow);
+        }
+
+        .project-body {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-body h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-preview {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(6, 182, 212, 0.05));
+            border-left: 1px solid var(--border-line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+        }
+
+        .preview-window {
+            background: #05080F;
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            border: 1px solid var(--border-line);
+            padding: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ---------------- Components Showcase Sandbox ---------------- */
+        .sandbox-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .sandbox-group {
+            background: var(--bg-sandbox-group);
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .sandbox-group h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mock-btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Tabs Sandbox */
+        .tab-component {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab-nav {
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-line);
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            flex: 1;
+            padding: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .tab-nav-btn.active {
+            background: var(--bg-surface);
+            color: var(--text-main);
+            border: 1px solid var(--border-line);
+        }
+
+        .tab-panel {
+            display: none;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-line);
+            padding: 1.2rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Accordion Sandbox */
+        .accordion-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .acc-block {
+            border: 1px solid var(--border-line);
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .acc-head {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 1.2rem;
+            text-align: left;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .acc-head::after {
+            content: '↓';
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+
+        .acc-block.open .acc-head::after {
+            transform: rotate(-180deg);
+        }
+
+        .acc-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            padding: 0 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .acc-block.open .acc-body {
+            padding: 0 1.2rem 1.2rem 1.2rem;
+        }
+
+        /* Loader Sandbox */
+        .loading-ring {
+            width: 36px;
+            height: 36px;
+            border: 3.5px solid rgba(0, 0, 0, 0.05);
+            border-top: 3.5px solid var(--clr-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Utility Button Sets */
+        .Newsavebtn, .Newresetbtn, .Newcancelbtn, .Newaddbtn {
+            color: white;
+            height: 32px !important;
+            padding: 0 20px !important;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .Newaddbtn { background: linear-gradient(135deg, #4f6bab 0%, #243c8c 100%); }
+        .Newresetbtn { background: linear-gradient(135deg, #d93e26 0%, #b12e18 100%); }
+        .Newcancelbtn { background: linear-gradient(135deg, #a7a7a7 0%, #8a8a8a 100%); }
+        .Newsavebtn { background: linear-gradient(135deg, #22a038 0%, #0e711f 100%); }
+
+        .shape-1 {
+            border-radius: 0px !important;
+            box-shadow: none !important;
+        }
+
+        .animationbutton {
+            padding: 0;
+            list-style-type: none;
+            margin-top: 1.5rem;
+        }
+
+        .animationbutton li {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 15rem;
+            height: 3em;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 0.5em;
+            margin: 0.5em 0;
+            color: white;
+            text-transform: capitalize;
+            line-height: 3em;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .animationbutton li:nth-child(odd) {
+            background: linear-gradient(to right, #00205b, #ef4444);
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+
+        .animationbutton li:nth-child(even) {
+            background: linear-gradient(to left, #00205b, #ef4444);
+            text-align: right;
+            padding-right: 1.5rem;
+        }
+
+        .animationbutton li:nth-child(odd):hover {
+            transform: perspective(200px) rotateY(-10deg);
+            padding-left: 2rem;
+        }
+
+        .animationbutton li:nth-child(even):hover {
+            transform: perspective(200px) rotateY(10deg);
+            padding-right: 2rem;
+        }
+
+        /* --- Left Progress Sidebar Form Element Framework --- */
+        .form-interactive-shell {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-top: 1rem;
+        }
+
+        .progress-container {
+            width: 240px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            bottom: 25px;
+            left: 20px;
+            width: 3px;
+            background: var(--step-line);
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .progress-step {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            z-index: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--step-bg);
+            border: 2px solid var(--step-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--step-text);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-icon {
+            border-color: var(--clr-primary);
+            background: var(--clr-primary);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .step-label {
+            margin-left: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .form-content {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-line);
+        }
+
+        .form-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-section h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-label);
+        }
+
+        label span { color: #ef4444; }
+
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--input-border);
+            background: var(--input-bg);
+            color: var(--text-main);
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            margin-top: 5px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--clr-primary);
+        }
+
+        .btn-container {
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        /* ---------------- Contact Section ---------------- */
+        .contact-panel {
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.02));
+        }
 
         /* ---------------- Footer ---------------- */
-        footer {background:#222; color:#fff; text-align:center; padding:2rem 0;}
+        footer {
+            border-top: 1px solid var(--border-line);
+            padding: 3.5rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
 
-        /* ---------------- Responsive ---------------- */
-        @media(max-width:768px){
-            .hero h1{font-size:2.2rem;}
-            .hero p{font-size:1rem;}
+        /* ---------------- Responsive Breakthroughs ---------------- */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3rem; }
+            .split-grid, .grid-two-equal, .project-stripe, .sandbox-layout, .form-interactive-shell { grid-template-columns: 1fr; flex-direction: column; }
+            .project-preview { border-left: none; border-top: 1px solid var(--border-line); }
+            .progress-container { width: 100%; }
+            .progress-line { display: none; }
+            .progress-step { display: inline-flex; margin-right: 1rem; }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Hero Section -->
+    <div class="theme-switcher-wrapper">
+        <button class="theme-toggle-btn" onclick="toggleSystemTheme()">
+            <span id="theme-icon">☀️</span> <span id="theme-text">Light Mode</span>
+        </button>
+    </div>
+
+    <div class="glow-orb"></div>
+
     <header class="hero">
-        <div class="hero-content container">
-            <h1>Hi, I'm Mohamed Ibrahim</h1>
-            <p>Senior UI & Frontend Developer with 8 years of experience in crafting engaging user experiences and dynamic web applications.</p>
-            <a href="#projects" class="btn">View My Work</a>
+        <div class="container">
+            <div class="availability-badge">
+                <span class="badge-pulse"></span> Available for Senior Opportunities
+            </div>
+            <h1>Hi, I'm Mohamed Ibrahim.<br><span>Senior UI & Frontend Developer</span></h1>
+            <p>Crafting responsive web architectures and interactive user interfaces backed by 8+ years of production performance experience across 4 companies.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn-prime">Review My Projects</a>
+                <a href="#contact" class="btn-prime secondary">Let's Connect</a>
+            </div>
         </div>
     </header>
 
-    <!-- Professional Summary -->
-    <section class="summary">
+    <section id="about">
         <div class="container">
-            <h2>Professional Summary</h2>
-            <p>Experienced and creative Web Developer committed to crafting interactive, user-friendly, and feature-rich websites. Possesses strong analytical skills and technical expertise in web solutions, adept at leading teams to success. Skilled in building websites from inception to completion and proficient in various programming languages including Angular, HTML5, CSS3, JavaScript, jQuery, Bootstrap 5, XSLT, XML, React Native, and WordPress at a foundational level. Eager to embrace new technologies for continuous learning and advancement.</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I am a Senior UI & Frontend Developer with almost 8 years of experience in Frontend, UI, and UX design and development. I have successfully completed 10 projects including both long-term and short-term projects. My expertise lies in designing intuitive user interfaces, optimizing performance, and delivering high-quality web applications that exceed client expectations.</p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills">
-        <div class="container">
-            <h2>My Skills</h2>
-            <div class="skill-list">
-                <div class="skill">HTML5</div>
-                <div class="skill">CSS3</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">React Native</div>
-                <div class="skill">Angular</div>
-                <div class="skill">jQuery</div>
-                <div class="skill">Bootstrap 5</div>
-                <div class="skill">SVN</div>
-                <div class="skill">Git</div>
-                <div class="skill">Redux</div>
-                <div class="skill">Adobe Creative Tools</div>
-                <div class="skill">Dreamweaver</div>
-                <div class="skill">XSLT / XML</div>
-                <div class="skill">Visual Studio Tools</div>
-                <div class="skill">Microsoft Office</div>
-                <div class="skill">Foundations D3.js</div>
-                <div class="skill">Sass & Less</div>
-                <div class="skill">Windows / Mac OS</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accomplishments Section -->
-    <section class="accomplishments">
-        <div class="container">
-            <h2>Accomplishments & Soft Skills</h2>
-            <div class="accomplishment-list">
-                <div class="accomplishment">Positive Thinking</div>
-                <div class="accomplishment">Problem Solving</div>
-                <div class="accomplishment">Time Management</div>
-                <div class="accomplishment">Smart Work</div>
-                <div class="accomplishment">Ownership</div>
-                <div class="accomplishment">Integrity</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications & Awards Section -->
-    <section class="certifications">
-        <div class="container">
-            <h2>Certifications & Awards</h2>
-            <div class="cert-list">
-                <div class="cert-card">Certified Web Design Application (Web Design)</div>
-                <div class="cert-card">Diploma in Office Accounting Software</div>
-                <div class="cert-card">Diploma in Office Automation</div>
-                <div class="cert-card">Most Valuable Player Award</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>Long-term project using Angular, Bootstrap 5 and REST APIs for enterprise application.</p>
+            <div class="split-grid">
+                <div class="glass-card">
+                    <span class="section-tag">// Professional Profile</span>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">About Me</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        I am a Senior UI & Frontend Developer with almost 8 years of experience in Frontend, UI, and UX design and development. I have successfully completed 15+ projects including both long-term and short-term projects. My expertise lies in designing intuitive user interfaces, optimizing performance, and delivering high-quality web applications that exceed client expectations.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                        Experienced and creative Web Developer committed to crafting interactive, user-friendly, and feature-rich websites. Possesses strong analytical skills and technical expertise in web solutions, adept at leading teams to success across 4 different corporate environments. Eager to embrace new technologies for continuous learning and advancement.
+                    </p>
                 </div>
-                <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Short-term UI redesign project improving UX and responsiveness for e-commerce website.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>React Native mobile app development for cross-platform user interaction.</p>
-                </div>
-                <!-- Add more projects as needed -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Components Section -->
-    <section class="components">
-        <div class="container">
-            <h2>UI Components</h2>
-
-            <!-- Buttons -->
-            <div class="component-group">
-                <h3>Buttons</h3>
-                <button class="btn">Primary</button>
-                <button class="btn-outline">Outline</button>
-                <button class="btn-success">Success</button>
-            </div>
-
-            <!-- Tabs -->
-            <div class="component-group">
-                <h3>Tabs</h3>
-                <div class="tabs">
-                    <div class="tab-header">
-                        <div class="tab-link active" onclick="openTab(event,'tab1')">Tab 1</div>
-                        <div class="tab-link" onclick="openTab(event,'tab2')">Tab 2</div>
+                <div class="metrics-stack">
+                    <div class="metric-tile">
+                        <span class="metric-title">8+ Yrs</span>
+                        <span class="metric-desc">Experience</span>
                     </div>
-                    <div id="tab1" class="tab-content active">Content of Tab 1</div>
-                    <div id="tab2" class="tab-content">Content of Tab 2</div>
-                </div>
-            </div>
-
-            <!-- Accordion -->
-            <div class="component-group">
-                <h3>Accordion</h3>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">Accordion Item 1</div>
-                        <div class="accordion-content">Content for accordion item 1.</div>
+                    <div class="metric-tile">
+                        <span class="metric-title">4</span>
+                        <span class="metric-desc">Companies Worked</span>
                     </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">Accordion Item 2</div>
-                        <div class="accordion-content">Content for accordion item 2.</div>
+                    <div class="metric-tile">
+                        <span class="metric-title">15+</span>
+                        <span class="metric-desc">Completed Projects</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Loader -->
-            <div class="component-group">
-                <h3>Loader</h3>
-                <div class="loader"></div>
+            <div class="grid-two-equal">
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-main);">Certifications & Awards</h3>
+                    <ul class="item-list">
+                        <li>Certified Web Design Application (Web Design)</li>
+                        <li>Diploma in Office Accounting Software</li>
+                        <li>Diploma in Office Automation</li>
+                        <li>Most Valuable Player Award</li>
+                    </ul>
+                </div>
+                <div class="glass-card" style="padding: 2rem;">
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-main);">Accomplishments & Soft Skills</h3>
+                    <ul class="item-list">
+                        <li>Positive Thinking & Ownership</li>
+                        <li>Problem Solving & Smart Work</li>
+                        <li>Time Management & Integrity</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
+    <section id="skills">
         <div class="container">
-            <h2>Contact Me</h2>
-            <p>Email: mohamed.ibrahim@example.com</p>
-            <a href="mailto:mohamed.ibrahim@example.com" class="btn">Send Email</a>
+            <span class="section-tag">Capabilities Matrix</span>
+            <h2 class="section-title">My Skills Stack</h2>
+            <div class="glass-card">
+                <div class="pill-cloud">
+                    <span class="pill-node accent">Angular</span>
+                    <span class="pill-node accent">React Native</span>
+                    <span class="pill-node accent">JavaScript</span>
+                    <span class="pill-node accent">HTML5</span>
+                    <span class="pill-node accent">CSS3</span>
+                    <span class="pill-node">Bootstrap 5</span>
+                    <span class="pill-node">Redux</span>
+                    <span class="pill-node">jQuery</span>
+                    <span class="pill-node">Sass & Less</span>
+                    <span class="pill-node">Foundations D3.js</span>
+                    <span class="pill-node">XSLT / XML</span>
+                    <span class="pill-node">Git</span>
+                    <span class="pill-node">SVN</span>
+                    <span class="pill-node">Adobe Creative Tools</span>
+                    <span class="pill-node">Dreamweaver</span>
+                    <span class="pill-node">Visual Studio Tools</span>
+                    <span class="pill-node">Microsoft Office</span>
+                    <span class="pill-node">Windows / Mac OS</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="projects">
+        <div class="container">
+            <span class="section-tag">// Shipped Applications (15+ Completed)</span>
+            <h2 class="section-title">Featured Project Repositories</h2>
+
+            <div class="showcase-stack">
+                <div class="project-stripe">
+                    <div class="project-body">
+                        <div>
+                            <h3>Project 1</h3>
+                            <p>Long-term project using Angular, Bootstrap 5 and REST APIs for enterprise application systems.</p>
+                        </div>
+                        <div class="pill-cloud">
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Angular</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Bootstrap 5</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <div class="preview-window mono" style="color: var(--clr-cyan);">
+                            // Instantiating Enterprise Application Module...<br>
+                            > Hooking dependencies safely [OK]<br>
+                            > Resolving REST framework array streams.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-stripe">
+                    <div class="project-body">
+                        <div>
+                            <h3>Project 2</h3>
+                            <p>Short-term UI redesign project improving UX, viewport responsiveness, and client access workflows for an active e-commerce website.</p>
+                        </div>
+                        <div class="pill-cloud">
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">UI/UX Redesign</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Responsive Framework</span>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <div class="preview-window mono" style="color: var(--clr-primary);">
+                            // Running Viewport Paint Analysis...<br>
+                            > Layout shift limits optimized.<br>
+                            > Performance Index Core Core: 99/100
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-stripe">
+                    <div class="project-body">
+                        <div>
+                            <h3>Project 3</h3>
+                            <p>React Native mobile app development designed for native-bridge execution and robust cross-platform user interaction paradigms.</p>
+                        </div>
+                        <div class="pill-cloud">
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">React Native</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Mobile Engineering</span>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <div class="preview-window mono" style="color: var(--clr-emerald);">
+                            // Native Thread Handshake...<br>
+                            > Device hardware mapping complete.<br>
+                            > Building package bundles [STABLE]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="components">
+        <div class="container">
+            <span class="section-tag">// Interface Components</span>
+            <h2 class="section-title">Atomic Sandbox Elements</h2>
+
+            <div class="glass-card sandbox-layout">
+
+                <div class="sandbox-group">
+                    <h3>UI Buttons</h3>
+                    <div class="mock-btn-row">
+                        <button class="btn-prime" style="padding: 0.6rem 1.4rem; font-size: 0.85rem; background: var(--text-main); color: var(--bg-canvas);">Action Link</button>
+                        <button class="btn-prime secondary" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Secondary Action</button>
+                    </div>
+                    <br><br>
+                    <button class="Newaddbtn">Save</button>
+                    <button class="Newresetbtn">Reset</button>
+                    <button class="Newcancelbtn">Cancel</button>
+                    <button class="Newsavebtn">Submit</button>
+                    <br><br>
+                    <button class="Newaddbtn shape-1">Save</button>
+                    <button class="Newresetbtn shape-1">Reset</button>
+                    <button class="Newcancelbtn shape-1">Cancel</button>
+                    <button class="Newsavebtn shape-1">Submit</button>
+                    <br>
+                    <ul class="animationbutton">
+                        <li>Save</li>
+                        <li>Next</li>
+                        <li>Okay</li>
+                        <li>Done</li>
+                    </ul>
+                </div>
+
+                <div class="sandbox-group" style="display: flex; flex-direction: column; justify-content: space-between; position: relative; min-height: 350px;">
+                    <h3>UI Loader</h3>
+                    <div class="loading-ring"></div>
+
+                    <div class="load">
+                        <div class="custom_loader">
+                            <div class="dot-loader"></div>
+                            <div class="dot-loader dot-loader--2"></div>
+                            <div class="dot-loader dot-loader--3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sandbox-group tab-component">
+                    <h3>UI Tabs</h3>
+                    <div class="tab-nav">
+                        <button class="tab-nav-btn active" onclick="triggerTab(event, 'pane-a')">Data Engine Node A</button>
+                        <button class="tab-nav-btn" onclick="triggerTab(event, 'pane-b')">Data Engine Node B</button>
+                    </div>
+                    <div id="pane-a" class="tab-panel active mono">
+                        [SYS]: Operational worker stream activated. Layout models rendering safely inside isolates.
+                    </div>
+                    <div id="pane-b" class="tab-panel mono">
+                        [SYS]: Allocations normal. Component locking cleanly inside destination frame parameters.
+                    </div>
+                </div>
+
+                <div class="sandbox-group tab-component">
+                    <h3>Sub Level Tabs</h3>
+                    <img src="Multiple tabs.png"  style="width: 100%;"/>
+                </div>
+
+                <div class="sandbox-group tab-component" style="grid-column: span 2;">
+                    <h3>Multi-Step Progress Wizard Flow</h3>
+                    
+                    <div class="form-interactive-shell">
+                        <div class="progress-container">
+                            <div class="progress-line"></div>
+                            <div class="progress-step active" data-step="0">
+                                <div class="step-icon">👤</div>
+                                <div class="step-label">Basic Info</div>
+                            </div>
+                            <div class="progress-step" data-step="1">
+                                <div class="step-icon">📞</div>
+                                <div class="step-label">Contact Details</div>
+                            </div>
+                            <div class="progress-step" data-step="2">
+                                <div class="step-icon">🌍</div>
+                                <div class="step-label">Nationality / PR</div>
+                            </div>
+                            <div class="progress-step" data-step="3">
+                                <div class="step-icon">🏠</div>
+                                <div class="step-label">Address</div>
+                            </div>
+                            <div class="progress-step" data-step="4">
+                                <div class="step-icon">🛂</div>
+                                <div class="step-label">Passport</div>
+                            </div>
+                            <div class="progress-step" data-step="5">
+                                <div class="step-icon">💼</div>
+                                <div class="step-label">Employment</div>
+                            </div>
+                        </div>
+
+                        <div class="form-content">
+                            <div class="form-section active">
+                                <h2>Basic Information</h2>
+                                <label>First Name <span>*</span></label>
+                                <input type="text" required placeholder="Mohamed">
+                                <label>Last Name <span>*</span></label>
+                                <input type="text" required placeholder="Ibrahim">
+                                <label>Date of Birth <span>*</span></label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-section">
+                                <h2>Contact Details</h2>
+                                <label>Email Address <span>*</span></label>
+                                <input type="email" required placeholder="mohamed@example.com">
+                                <label>Mobile Number <span>*</span></label>
+                                <input type="text" required placeholder="+1 234 567 890">
+                            </div>
+                            <div class="form-section">
+                                <h2>Nationality / PR Status</h2>
+                                <label>Nationality <span>*</span></label>
+                                <input type="text" required placeholder="Canadian">
+                                <label>PR Status</label>
+                                <select>
+                                    <option>Citizen</option>
+                                    <option>Permanent Resident</option>
+                                    <option>Work Permit</option>
+                                </select>
+                            </div>
+                            <div class="form-section">
+                                <h2>Address Details</h2>
+                                <label>Address Line 1 <span>*</span></label>
+                                <input type="text" required placeholder="123 Alpha Avenue">
+                                <label>City <span>*</span></label>
+                                <input type="text" required placeholder="Toronto">
+                                <label>Postal Code <span>*</span></label>
+                                <input type="text" required placeholder="M5V 2T6">
+                            </div>
+                            <div class="form-section">
+                                <h2>Passport Details</h2>
+                                <label>Passport Number <span>*</span></label>
+                                <input type="text" required placeholder="A1234567">
+                                <label>Issued Country <span>*</span></label>
+                                <input type="text" required placeholder="Canada">
+                                <label>Expiry Date <span>*</span></label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-section">
+                                <h2>Employment Details</h2>
+                                <label>Company Name <span>*</span></label>
+                                <input type="text" required placeholder="Tech Innovators Inc.">
+                                <label>Job Title <span>*</span></label>
+                                <input type="text" required placeholder="Senior UI Developer">
+                                <label>Years of Experience <span>*</span></label>
+                                <input type="number" required placeholder="8">
+                            </div>
+
+                            <div class="btn-container">
+                                <button id="nextBtn" class="btn-prime" style="padding: 0.5rem 1.5rem; font-size: 0.85rem; background: var(--text-main); color: var(--bg-canvas);">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sandbox-group accordion-stack" style="grid-column: span 2;">
+                    <h3>UI Accordion</h3>
+                    <div class="acc-block">
+                        <button class="acc-head" onclick="triggerAccordion(this)">Structural Architecture Parameters</button>
+                        <div class="acc-body">
+                            <p style="padding-top: 0.5rem;">Encapsulated component blocks safely handle internal dependencies away from volatile shared states.</p>
+                        </div>
+                    </div>
+                    <div class="acc-block">
+                        <button class="acc-head" onclick="triggerAccordion(this)">State Mutation Channels</button>
+                        <div class="acc-body">
+                            <p style="padding-top: 0.5rem;">Properties mutate down cleanly along predictable streams, facilitating systematic bug tracing.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-panel">
+        <div class="container">
+            <span class="section-tag">Available for Contracts</span>
+            <h2 class="section-title" style="margin-bottom: 1rem;">Let's Build Something Exceptional</h2>
+            <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto 2.5rem;">Reach out directly to discuss web layout components, design systems, or active development initiatives across my 8+ years of expertise.</p>
+            <a href="mailto:mohamed.ibrahim@example.com" class="btn-prime">Send Secure Message</a>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Mohamed Ibrahim. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2026 Mohamed Ibrahim. All rights reserved. Handcrafted using high-performance semantic layouts.</p>
+        </div>
     </footer>
 
-    <!-- Scripts for Tabs and Accordion -->
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
-            tablinks = document.getElementsByClassName("tab-link");
-            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+        // Adaptive Theme Switcher Engine Hook
+        function toggleSystemTheme() {
+            const bodyNode = document.documentElement;
+            const currentTheme = bodyNode.getAttribute('data-theme');
+            const iconNode = document.getElementById('theme-icon');
+            const textNode = document.getElementById('theme-text');
+            
+            if (currentTheme === 'dark') {
+                bodyNode.setAttribute('data-theme', 'light');
+                iconNode.textContent = '🌙';
+                textNode.textContent = 'Dark Mode';
+            } else {
+                bodyNode.setAttribute('data-theme', 'dark');
+                iconNode.textContent = '☀️';
+                textNode.textContent = 'Light Mode';
+            }
         }
 
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            content.style.display = content.style.display === "block" ? "none" : "block";
+        function triggerTab(e, targetedPaneId) {
+            const shell = e.currentTarget.closest('.tab-component');
+            shell.querySelectorAll('.tab-nav-btn').forEach(b => b.classList.remove('active'));
+            shell.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+            e.currentTarget.classList.add('active');
+            document.getElementById(targetedPaneId).classList.add('active');
         }
+
+        function triggerAccordion(element) {
+            const nodeBlock = element.parentElement;
+            const contentPane = element.nextElementSibling;
+
+            if (nodeBlock.classList.contains('open')) {
+                nodeBlock.classList.remove('open');
+                contentPane.style.maxHeight = null;
+            } else {
+                nodeBlock.classList.add('open');
+                contentPane.style.maxHeight = contentPane.scrollHeight + "px";
+            }
+        }
+
+        // Multi-Step Progress Tracker Wizard Logic Hooks
+        const steps = document.querySelectorAll('.progress-step');
+        const sections = document.querySelectorAll('.form-section');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentStep = 0;
+
+        function updateForm() {
+            sections.forEach((s, i) => s.classList.toggle('active', i === currentStep));
+            steps.forEach((s, i) => s.classList.toggle('active', i <= currentStep));
+            nextBtn.textContent = currentStep === steps.length - 1 ? "Submit" : "Next";
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) currentStep++;
+            else alert("✅ Form submitted successfully!");
+            updateForm();
+        });
+
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                currentStep = parseInt(step.dataset.step);
+                updateForm();
+            });
+        });
     </script>
-
 </body>
+
 </html>
