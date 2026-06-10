@@ -75,7 +75,7 @@
 
         /* ---------------- Layout Framework ---------------- */
         .container {
-            width: 98%;
+            width: 90%;
             max-width: var(--max-width);
             margin: 0 auto;
         }
@@ -206,6 +206,8 @@
         .btn-group {
             display: flex;
             justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 1.2rem;
         }
 
@@ -237,6 +239,20 @@
             background: rgba(255, 255, 255, 0.06);
             border-color: var(--text-muted);
             box-shadow: none;
+        }
+
+        .btn-prime.codepen {
+            background: linear-gradient(135deg, #1E1E24 0%, #000000 100%);
+            border: 1px solid #3A3A43;
+            color: #FFF;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-prime.codepen:hover {
+            border-color: var(--clr-cyan);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15);
         }
 
         /* ---------------- Cards & Layout Matrices ---------------- */
@@ -434,11 +450,12 @@
         .preview-window {
             background: #05080F;
             width: 100%;
-            height: 180px;
+            height: 195px;
             border-radius: 8px;
             border: 1px solid var(--border-line);
-            padding: 1.5rem;
+            padding: 1.3rem;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
         }
 
         /* ---------------- Components Showcase Sandbox ---------------- */
@@ -829,6 +846,10 @@
             <p>Crafting responsive web architectures and interactive user interfaces backed by 8+ years of production performance experience across 4 companies.</p>
             <div class="btn-group">
                 <a href="#projects" class="btn-prime">Review My Projects</a>
+                <a href="https://codepen.io/editor/Mohamed-Ibrahim-the-typescripter/pen/019daf49-7195-7591-8e74-7a66dfb4297f" target="_blank" class="btn-prime codepen">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="125"></line><line x1="12" y1="2" x2="12" y2="12"></line><polygon points="12 12 22 8.5 12 2 2 8.5 12 12"></polygon><polygon points="12 12 22 15.5 12 22 2 15.5 12 12"></polygon></svg>
+                    Explore My CodePen Work
+                </a>
                 <a href="#contact" class="btn-prime secondary">Let's Connect</a>
             </div>
         </div>
@@ -920,23 +941,25 @@
             <h2 class="section-title">Featured Project Repositories</h2>
 
             <div class="showcase-stack">
+                
                 <div class="project-stripe">
                     <div class="project-body">
                         <div>
-                            <h3>Project 1</h3>
-                            <p>Long-term project using Angular, Bootstrap 5 and REST APIs for enterprise application systems.</p>
+                            <h3>Premium Medical Cosmetic E-Commerce Platform</h3>
+                            <p>Engineered a visual-first medical cosmetic storefront. Leveraged Angular architecture patterns combined with custom vanilla JS components and structural HTML5/CSS3 to construct a fast layout lifecycle with highly optimized painting thresholds.</p>
                         </div>
                         <div class="pill-cloud">
                             <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Angular</span>
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Bootstrap 5</span>
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">REST APIs</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">HTML5 / CSS3</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Vanilla JavaScript</span>
                         </div>
                     </div>
                     <div class="project-preview">
                         <div class="preview-window mono" style="color: var(--clr-cyan);">
-                            // Instantiating Enterprise Application Module...<br>
-                            > Hooking dependencies safely [OK]<br>
-                            > Resolving REST framework array streams.
+                            // Auditing Cosmetic Media Pipelines...<br>
+                            > Layout shift metrics checked: 0.01 [OK]<br>
+                            > Lazy-loading dynamic treatment modules...<br>
+                            > Store view state initialized in 14ms.
                         </div>
                     </div>
                 </div>
@@ -944,19 +967,21 @@
                 <div class="project-stripe">
                     <div class="project-body">
                         <div>
-                            <h3>Project 2</h3>
-                            <p>Short-term UI redesign project improving UX, viewport responsiveness, and client access workflows for an active e-commerce website.</p>
+                            <h3>Job Portal Applicants Workspace</h3>
+                            <p>Developed an interactive candidate management system using Angular. Focused extensively on designing custom dynamic UI components, advanced filter fields, and multi-state view templates for candidate profile pipelines.</p>
                         </div>
                         <div class="pill-cloud">
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">UI/UX Redesign</span>
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Responsive Framework</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Angular</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">UI Components</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Dynamic Routing</span>
                         </div>
                     </div>
                     <div class="project-preview">
                         <div class="preview-window mono" style="color: var(--clr-primary);">
-                            // Running Viewport Paint Analysis...<br>
-                            > Layout shift limits optimized.<br>
-                            > Performance Index Core Core: 99/100
+                            // Instantiating Filter Framework...<br>
+                            > Binding profile query listeners...<br>
+                            > Reusable candidate-card layout resolved.<br>
+                            > Zero thread leakage detected across views.
                         </div>
                     </div>
                 </div>
@@ -964,22 +989,69 @@
                 <div class="project-stripe">
                     <div class="project-body">
                         <div>
-                            <h3>Project 3</h3>
-                            <p>React Native mobile app development designed for native-bridge execution and robust cross-platform user interaction paradigms.</p>
+                            <h3>Real-Time Financial Trading System</h3>
+                            <p>Built a ultra-modern dashboard theme optimized for transaction tracking. Customized structural D3.js plugins to output smooth data chart graphs under continuous tick intervals without choking hardware layer memory wrappers.</p>
                         </div>
                         <div class="pill-cloud">
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">React Native</span>
-                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Mobile Engineering</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">D3.js Plugins</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Custom Dashboards</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Data Sync</span>
                         </div>
                     </div>
                     <div class="project-preview">
                         <div class="preview-window mono" style="color: var(--clr-emerald);">
-                            // Native Thread Handshake...<br>
-                            > Device hardware mapping complete.<br>
-                            > Building package bundles [STABLE]
+                            // Connecting WebSocket Streams...<br>
+                            > Binding order-book depth intervals...<br>
+                            > Redrawing D3 scale matrices safely.<br>
+                            > Performance limit target: 60 FPS locked.
                         </div>
                     </div>
                 </div>
+
+                <div class="project-stripe">
+                    <div class="project-body">
+                        <div>
+                            <h3>Blinds & Shutters Fabric CRM System</h3>
+                            <p>Engineered an advanced configuration CRM platform. Crafted an interactive HTML5 Canvas utility for custom fabric cutter tracking alongside drop-and-drag dashboard widgets, completely optimizing manual quote generation workflows.</p>
+                        </div>
+                        <div class="pill-cloud">
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">HTML5 Canvas</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Drag & Drop</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">CRM Logic</span>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <div class="preview-window mono" style="color: #EAB308;">
+                            // Initializing Interactive Canvas Layout...<br>
+                            > Binding absolute fabric geometric vectors...<br>
+                            > Drag-and-drop dashboard slots mapping...<br>
+                            > Custom calculation engine connected.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-stripe">
+                    <div class="project-body">
+                        <div>
+                            <h3>Next-Gen HRM Management Suite</h3>
+                            <p>Steered the UI overhaul of an enterprise HRM system backed by Java microservices. Restructured application layout runtimes using modern Angular modules styled completely via customized, modular Less and Sass architectures.</p>
+                        </div>
+                        <div class="pill-cloud">
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Angular</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Sass / Less</span>
+                            <span class="pill-node" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Java API Integrations</span>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <div class="preview-window mono" style="color: #EC4899;">
+                            // Pre-compiling Token Variables...<br>
+                            > Compiling nested layout scope mixins...<br>
+                            > Connecting claim & leave data bridges...<br>
+                            > Structural overhaul verified stable.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1045,7 +1117,16 @@
 
                 <div class="sandbox-group tab-component">
                     <h3>Sub Level Tabs</h3>
-                    <img src="Multiple tabs.png"  style="width: 100%;"/>
+                    <div class="tab-nav" style="background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.15);">
+                        <button class="tab-nav-btn active" onclick="triggerTab(event, 'nested-pane-1')">Global Matrix Configuration</button>
+                        <button class="tab-nav-btn" onclick="triggerTab(event, 'nested-pane-2')">Local Pipeline Nodes</button>
+                    </div>
+                    <div id="nested-pane-1" class="tab-panel active mono" style="font-size: 0.8rem;">
+                        [SUB-TAB 01]: Sub-level parameters initialized under active scope structures.
+                    </div>
+                    <div id="nested-pane-2" class="tab-panel mono" style="font-size: 0.8rem;">
+                        [SUB-TAB 02]: Shared thread nodes sitting safe from external memory spikes.
+                    </div>
                 </div>
 
                 <div class="sandbox-group tab-component" style="grid-column: span 2;">
@@ -1179,7 +1260,6 @@
     </footer>
 
     <script>
-        // Adaptive Theme Switcher Engine Hook
         function toggleSystemTheme() {
             const bodyNode = document.documentElement;
             const currentTheme = bodyNode.getAttribute('data-theme');
@@ -1219,7 +1299,6 @@
             }
         }
 
-        // Multi-Step Progress Tracker Wizard Logic Hooks
         const steps = document.querySelectorAll('.progress-step');
         const sections = document.querySelectorAll('.form-section');
         const nextBtn = document.getElementById('nextBtn');
